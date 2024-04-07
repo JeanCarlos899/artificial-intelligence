@@ -22,7 +22,7 @@ A classe `BagProblem` utiliza os seguintes métodos principais:
 * **select_item():** Seleciona o próximo item a ser adicionado à mochila com base na função de seleção.
 * **viability(item):** Verifica se um item pode ser adicionado à mochila sem ultrapassar o peso máximo.
 * **goal():** Retorna a porcentagem do peso máximo da mochila que já foi preenchida.
-* **is_solution():** Verifica se a solução atual é completa ou o maior valor possível foi alcançado.
+* **is_solution():** Verifica se a solução atual é completa ou a melhor solução possível foi alcançada. 
 
 ## Exemplo de Uso
 
