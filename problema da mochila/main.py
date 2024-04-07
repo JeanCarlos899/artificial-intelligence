@@ -132,7 +132,7 @@ if __name__ == "__main__":
         Item("Machado", 3.5),
     ]
 
-    bag_problem = BagProblem(items=items, maximum_bag_weight=10)
+    bag_problem = BagProblem(items=items, maximum_bag_weight=40)
     
     solution = bag_problem.run()
 
@@ -141,9 +141,9 @@ if __name__ == "__main__":
         print(f"{item.name} - {item.weight}kg")
 
     print()
-    print("---------- Métricas ----------\n")
-    print(f"Total de itens inicialmente: {len(items)}")
-    print(f"Total de itens na bolsa: {len(solution)}")
+    print("-------------- Métricas --------------\n")
     print(f"Peso máximo da bolsa: {bag_problem.maximum_bag_weight}kg")
+    print()
+    print(f"Total de itens na bolsa: {len(solution)}")
     print(f"Total: {bag_problem.sum_of_solution_items()}kg")
     print(f"{bag_problem.goal():.2f}% do objetivo alcançado.")
