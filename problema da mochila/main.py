@@ -132,7 +132,7 @@ if __name__ == "__main__":
         Item("Machado", 3.5),
     ]
 
-    bag_problem = BagProblem(items=items, maximum_bag_weight=40)
+    bag_problem = BagProblem(items=items, maximum_bag_weight=10)
     
     solution = bag_problem.run()
 
