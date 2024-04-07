@@ -55,10 +55,9 @@ class BagProblem:
                 self.solution.append(item)
                 self.items.remove(item)
                 continue
-        
+
             # remove o item da lista de itens, caso não seja viável.
             self.items.remove(item)
-
 
         return self.solution
 
@@ -77,7 +76,10 @@ class BagProblem:
         # se a somatória do peso da bolsa somado ao peso do item for menor
         # que o peso máximo da bolsa, retorna verdadeiro.
 
-        if (self.sum_of_solution_items() + item.weight) <= self.maximum_bag_weight:
+        if (
+            (self.sum_of_solution_items() + item.weight) <=
+            self.maximum_bag_weight
+        ):
             return True
 
         return False
@@ -133,7 +135,7 @@ if __name__ == "__main__":
     ]
 
     bag_problem = BagProblem(items=items, maximum_bag_weight=10)
-    
+
     solution = bag_problem.run()
 
     print("---------- Itens na mochila ----------\n")
