@@ -33,9 +33,13 @@
 ############################# Implementação ####################################
 
 class Item:
-    def __init__(self, name: str, weight: float) -> None:
+    def __init__(self, name: str, weight: float, value: float) -> None:
         self.name = name
         self.weight = weight
+        self.value = value
+
+    def value_per_weight(self):
+        return self.value / self.weight
 
 
 class BagProblem:
@@ -62,12 +66,15 @@ class BagProblem:
         return self.solution
 
     def select_item(self):
+        # seleciona o item com a maior razão valor/peso, para ser adicionado a
+        # bolsa.
+
         selected = None
 
         for item in self.items:
             if selected == None:
                 selected = item
-            elif item.weight > selected.weight:
+            elif item.value_per_weight() > selected.value_per_weight():
                 selected = item
 
         return selected
@@ -77,7 +84,7 @@ class BagProblem:
         # que o peso máximo da bolsa, retorna verdadeiro.
 
         if (
-            (self.sum_of_solution_items() + item.weight) <=
+            (self.sum_of_solution_items_weight() + item.weight) <=
             self.maximum_bag_weight
         ):
             return True
@@ -88,7 +95,7 @@ class BagProblem:
         # retorna quantos porcento a solução atual representa do peso máximo da
         # bolsa.
 
-        return (self.sum_of_solution_items() / self.maximum_bag_weight) * 100
+        return (self.sum_of_solution_items_weight() / self.maximum_bag_weight) * 100
 
     def is_solution(self):
 
@@ -98,54 +105,55 @@ class BagProblem:
         # ou simplesmente não existem mais itens.
 
         if (
-            self.sum_of_solution_items() == self.maximum_bag_weight
+            self.sum_of_solution_items_weight() == self.maximum_bag_weight
             or not self.items
         ):
-            return self.solution
-
-        # verifica se não há mais itens viáveis para serem adicionados a bolsa.
-        elif all(not self.viability(item) for item in self.items):
-            return self.solution
+            return True
 
         return False
 
-    def sum_of_solution_items(self):
-        value = 0
-        for item in self.solution:
-            value += item.weight
+    def sum_of_solution_items_weight(self):
+        # retorna a somatória do peso dos itens da bolsa.
+        return sum(item.weight for item in self.solution)
 
-        return value
+    def sum_of_solution_items_value(self):
+        # retorna a somatória do valor dos itens da bolsa.
+        return sum(item.value for item in self.solution)
 
 
 if __name__ == "__main__":
+    print("\033c")
 
     # itens ilustrativos para o problema da mochila, pesando o total de 25kg.
 
     items = [
-        Item("Garrafa térmica", 2.0),
-        Item("Cantil de água", 1.0),
-        Item("Panela de camping", 3.0),
-        Item("Barraca para acampamento", 2.5),
-        Item("Roupas de frio", 2.0),
-        Item("Kit de primeiros socorros", 3.0),
-        Item("Lanterna com baterias", 2.5),
-        Item("Saco de dormir", 4.0),
-        Item("Ferramenta multifuncional", 1.5),
-        Item("Machado", 3.5),
+        Item("Garrafa térmica", 2.0, 40),
+        Item("Cantil de água", 1.0, 10),
+        Item("Panela de camping", 3.0, 50),
+        Item("Barraca para acampamento", 2.5, 80),
+        Item("Roupas de frio", 2.0, 60),
+        Item("Kit de primeiros socorros", 3.0, 40),
+        Item("Lanterna com baterias", 2.5, 30),
+        Item("Saco de dormir", 4.0, 100),
+        Item("Ferramenta multifuncional", 1.5, 70),
+        Item("Machado", 3.5, 90),
+        Item("Comida enlatada", 0.5, 25),
     ]
 
     bag_problem = BagProblem(items=items, maximum_bag_weight=10)
-
     solution = bag_problem.run()
 
-    print("---------- Itens na mochila ----------\n")
-    for item in solution:
-        print(f"{item.name} - {item.weight}kg")
+    total_value = bag_problem.sum_of_solution_items_value()
+    total_weight = bag_problem.sum_of_solution_items_weight()
 
-    print()
-    print("-------------- Métricas --------------\n")
-    print(f"Peso máximo da bolsa: {bag_problem.maximum_bag_weight}kg")
-    print()
-    print(f"Total de itens na bolsa: {len(solution)}")
-    print(f"Total: {bag_problem.sum_of_solution_items()}kg")
+    print("----------------------- Itens na mochila ----------------------")
+
+    for item in solution:
+        print(f"{item.name} - {item.weight}kg - Valor: {item.value} - R${item.value_per_weight():.2f} por kg.")
+
+    print("-------------------------- Métricas ---------------------------")
+    print(f"Peso máximo da bolsa: {bag_problem.maximum_bag_weight}kg.")
+    print(f"Total de itens na bolsa: {len(solution)}.")
+    print(f"Total: {bag_problem.sum_of_solution_items_weight()}kg.")
+    print(f"Total: R${total_value:.2f}.")
     print(f"{bag_problem.goal():.2f}% do objetivo alcançado.")
