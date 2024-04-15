@@ -5,33 +5,60 @@ from node import Node
 from problem import Problem
 
 
-def bread_first_search(problem: Problem):
-    # frontier é uma fila de nós - FIFO
-    frontier = deque([Node(problem.initial_state)])
+class BreadFirstSearch:
+    def __init__(self, problem: Problem):
+        self.problem = problem
+        self.sorce = Node(problem.initial_state)
+        self.frontier = deque([self.sorce])
+        self.reached = [self.sorce]
 
-    # a fronteira é uma fila de nós, portanto, o algoritmo continua
-    # até que a fronteira esteja vazia
-    while frontier:     # enquanto houver nós na fronteira...
-        # remove o primeiro nó da fronteira e o armazena em node para explorar
-        # o estado do nó. 
-        node = frontier.popleft() 
+    def search(self):
+        # se o estado inicial é o objetivo, retorna o nó raiz
+        if self.problem.objective(self.problem.initial_state):
+            return Node(self.problem.initial_state)
 
-        # se o estado do nó for o estado final, então o nó é a solução
-        if problem.objective(node.state):
-            return node
-        
-        # se o estado do nó não for o estado final, então a fronteira é
-        # estendida com os nós filhos do nó atual.
+        # enquanto a fronteria não estiver vazia
+        while self.frontier:
+            # recebe o primeiro nó da fila (FIFO) e o remove
+            node = self.frontier.popleft()
 
-        # por ser uma fila, os nós filhos são adicionados ao final da fila
-        frontier.extend(node.explore(problem))
-    return None
+            # percorrido cada filho do nó
+            for child in node.explore(problem):
+                # recebendo o estado do filho
+                state = child.state
+                # verifico se o estado é o objetivo
+                if problem.objective(state):
+                    # adiciono o nó na lista de nós visitados
+                    self.reached.append(child)
+                    # caso seja, retorno o nó
+                    return child
+
+                # verifico se o estado já foi visitado
+                if state not in [node.state for node in self.reached]:
+                    self.frontier.append(child)
+                    self.reached.append(child)
+
+                # modifiquei a implementação que o professor fez em sala para ficar
+                # mais parecida com a implementação da busca em largura que tinha no
+                # search.md. Notei que faltava salvar os nós visitados, o que
+                # causava um loop e a busca ficava com uma performance ruim
+
+        # em último caso, retorna None indicando que não foi encontrado o objetivo
+        return None
 
 
 if __name__ == '__main__':
     problem = Problem(initial_state='Arad', final_state='Bucharest')
+    breadth_first_search = BreadFirstSearch(problem)
 
-    nodes = bread_first_search(problem).solution()
+    node = breadth_first_search.search()
+    solution = node.solution()
 
-    for node in nodes:
-        print(node, end=' -> ' if node != nodes[-1] else '')
+    print('-------------- Nós percorridos --------------')
+    for node in breadth_first_search.reached:
+        print(node.state, end=' -> ' if node.state !=
+              problem.final_state else '\n')
+
+    print('------------------ Solução ------------------')
+    for node in solution:
+        print(node, end=' -> ' if node != problem.final_state else '')

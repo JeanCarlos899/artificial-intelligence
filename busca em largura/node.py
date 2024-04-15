@@ -15,7 +15,7 @@ class Node:
         next_node = Node(state=next_state, father=self, action=action)
         return next_node
 
-    def explore(self, problem: Problem):
+    def explore(self, problem: Problem) -> list['Node']:
         """Retorna todos os filhos"""
         nodes = []
         for action in problem.actions(self.state):
