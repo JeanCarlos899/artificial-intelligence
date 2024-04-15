@@ -41,7 +41,7 @@ class BreadFirstSearch:
                 # modifiquei a implementação que o professor fez em sala para ficar
                 # mais parecida com a implementação da busca em largura que tinha no
                 # search.md. Notei que faltava salvar os nós visitados, o que
-                # causava um loop e a busca ficava com uma performance ruim
+                # causava uma performance ruim.
 
         # em último caso, retorna None indicando que não foi encontrado o objetivo
         return None
