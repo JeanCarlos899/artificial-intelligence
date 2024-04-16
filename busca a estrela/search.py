@@ -7,7 +7,7 @@ import os
 class AStarSearch:
     def __init__(self, problem: Problem) -> Node:
         # a busca A* recebe um problema, inicializa a fila de prioridade e a
-        # lista de nós visitados que serve
+        # lista de nós visitados
         self.problem = problem
         self.priority_queue = []
         self.visited_nodes = []
