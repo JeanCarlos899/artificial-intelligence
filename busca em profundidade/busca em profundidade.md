@@ -6,7 +6,7 @@ Esse algoritmo é utilizado para encontrar um elemento em um grafo. Ele é basea
 
 Dado o mapa abaixo, utilizando a busca em profundidade, faça um algoritmo que encontre um caminho de `Arad` a `Bucharest`. O estado inicial é representado pelo círculo verde e o estado final é representado pelo círculo vermelho. 
 
-![alt text](<../mapa heurística.png>)
+![alt text](<../mapa simples.png>)
 
 ## Implementação da busca em profundidade
 
