@@ -10,7 +10,7 @@ Dado o mapa abaixo, utilizando a busca em largura, faça um algoritmo que encont
 
 ## Implementação da busca em largura
 
-A implementação da busca em largura é feita na classe `bread_first_search`, que percorre cada `vértice` do gráfo a partir da `raiz`, removendo-o da fila e verificando se ele é o `vértice` `objetivo`. Caso não seja, ele acidiona os filhos do `vértice` à fila de `vértices` a serem visitados. O algoritmo é interrompido quando o `vértice` `objetivo` é encontrado.
+A implementação da busca em largura é feita na classe `BreadFirstSearch`, que percorre cada `vértice` do gráfo a partir da `raiz`, removendo-o da fila e verificando se ele é o vértice **objetivo**. Caso não seja, ele acidiona os filhos do **vértice** à fila de `vértices` a serem visitados. O algoritmo é interrompido quando o vértice `objetivo` é encontrado.
 
 ## Exemplo de uso
 
