@@ -6,15 +6,21 @@ Esse algoritmo é utilizado para encontrar o caminho mais curto entre dois vért
 
 Dado o mapa abaixo, utilizando a busca de custo uniforme, faça um algoritmo que encontre o menor caminho de `Arad` a `Bucharest`. O estado inicial é representado pelo círculo verde e o estado final é representado pelo círculo vermelho. 
 
-![alt text](<../mapa heurística.png>)
+![mapa simples](<../mapa simples.png>)
 
 ## Implementação da busca de custo uniforme
 
-A implementação da busca de custo uniforme é feita na classe `UniformCostSearch` no arquivo `search.py`. O algoritmo é baseado em uma fila de prioridade, onde o nó com menor custo de caminho é expandido primeiro.
+Este código implementa o algoritmo de Busca de Custo Uniforme, uma abordagem de busca que explora nós com base no custo total acumulado até eles. A busca utiliza uma fila de prioridade (`frontier`) para manter os nós a serem explorados, ordenados pelo custo total.
+
+A busca começa com o nó inicial (`root`) com custo zero. Em cada iteração, o nó com menor custo total é retirado da fila. Se o estado desse nó é o objetivo, a busca termina e o nó é retornado.
+
+Caso contrário, os estados dos filhos do nó atual são verificados. Se um estado filho não foi explorado, ele é adicionado à fila com seu custo total acumulado.
+
+Se a busca terminar sem encontrar o objetivo, `None` é retornado. O código também imprime os estados explorados e a solução encontrada com seu custo total.
 
 ## Exemplo de uso
 
-No exemplo fornecido, o algoritmo encontra o menor caminho de `Arad` a `Bucharest` e imprime os nós visitados e a solução do problema.
+No exemplo fornecido, o algoritmo encontra o menor caminho de `Arad` a `Bucharest` e imprime os nós visitados, solução do problema e seu custo.
 
 ## Como executar
 
