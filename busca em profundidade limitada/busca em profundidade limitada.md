@@ -10,7 +10,7 @@ Dado o mapa abaixo, utilizando a busca em profundidade limitada, faça um algori
 
 ## Implementação da busca em profundidade limitada
 
-A implementação é um algoritmo de busca em profundidade limitada (Depth-Limited Search, DLS) que explora um grafo até uma profundidade máxima definida pelo usuário. Mantém uma lista de nós a serem explorados (fronteira) seguindo LIFO, evitando ciclos e duplicações rastreando estados visitados. Durante a busca, retira nós da fronteira para verificar se o objetivo foi alcançado. Se a profundidade do nó não excede o limite e não há ciclo, seus filhos são adicionados à fronteira. O algoritmo retorna estados visitados e, se encontra a solução, o caminho percorrido até o estado final.
+A implementação é um algoritmo de busca em profundidade `limitada` (Depth-Limited Search, DLS) que explora um grafo até uma profundidade máxima definida pelo usuário. Mantém uma lista de nós a serem explorados (`fronteira`) seguindo LIFO, evitando ciclos e duplicações rastreando estados visitados. Durante a busca, retira nós da fronteira para verificar se o objetivo foi alcançado. Se a profundidade do nó não excede o limite e não há ciclo, seus filhos são adicionados à `fronteira`. O algoritmo retorna estados visitados e, se encontra a solução, o caminho percorrido até o estado final.
 
 ## Exemplo de uso
 
