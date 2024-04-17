@@ -18,7 +18,7 @@ No exemplo fornecido, o algoritmo encontra um caminho de `Arad` a `Bucharest` e 
 
 ## Como executar
 
-Para testar o algoritmo, execute a partir do arquivo `search.py`. Será impresso o caminho de `Arad` a `Bucharest`.
+Para testar o algoritmo, execute a partir do arquivo `search.py`. Será impresso os nós percorridos de `Arad` a `Bucharest` e a solução do problema.
 
 ```bash
 python search.py
