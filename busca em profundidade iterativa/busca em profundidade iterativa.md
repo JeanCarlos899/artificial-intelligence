@@ -1,6 +1,6 @@
 # Busca em profundidade iterativa
 
-Esse algoritmo é utilizado para encontrar um elemento em um grafo. Ele é baseado no algoritmo de busca em profundidade iterativa, que começa no nó raiz e explora o máximo possível cada um dos seus ramos antes de retroceder. Isso dentro do limite de uma profundidade máxima. Se o nó objetivo não for encontrado, a busca é reiniciada com um limite de profundidade maior.
+Esse algoritmo é utilizado para encontrar um elemento em um grafo. Ele é baseado no algoritmo de busca em profundidade iterativa, que começa no nó raiz e explora o máximo possível cada um dos seus ramos antes de retroceder. Isso dentro do limite de uma profundidade máxima que é incrementado a cada execução. Se o nó objetivo não for encontrado, a busca é reiniciada com um limite de profundidade maior.
 
 ## Problema
 
