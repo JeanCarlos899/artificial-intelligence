@@ -1,4 +1,4 @@
-# Busca em profundidade iterativa
+# Busca em profundidade limitada
 
 Esse algoritmo é utilizado para encontrar um elemento em um grafo. Ele é baseado no algoritmo de busca em profundidade limitada, que começa no nó raiz e explora o máximo possível cada um dos seus ramos antes de retroceder. Isso dentro do limite de uma profundidade máxima. 
 
