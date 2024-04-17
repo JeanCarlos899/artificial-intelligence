@@ -6,20 +6,11 @@ Esse algoritmo é utilizado para encontrar o caminho mais curto entre dois vért
 
 Dado o mapa abaixo, utilizando a busca em largura, faça um algoritmo que encontre o menor caminho de `Arad` a `Bucharest`. O estado inicial é representado pelo círculo verde e o estado final é representado pelo círculo vermelho. 
 
-![alt text](<../mapa heurística.png>)
+![mapa com heurística](<../mapa heurística.png>)
 
 ## Implementação da busca A*
 
-A implementação da busca em largura é feita na classe `AStarSearch` e utiliza a função `search` para encontrar o menor caminho entre dois vértices. A função `search` funciona da seguinte forma:
-1. Insere o estado inicial na lista de prioridade;
-2. Enquanto a lista de prioridade não estiver vazia, faça:
-    1. Remove o nó com menor custo da lista de prioridade;
-    2. Adiciona o nó removido na lista de visitados;
-    3. Se o nó for o estado final, retorna o nó;
-    4. Para cada ação possível a partir do nó, faça:
-        1. Calcula o custo do nó filho;
-        2. Insere o nó filho na lista de prioridade;
-3. retorna `None` se não encontrar o estado final.
+O código implementa o algoritmo de busca A* para resolver um problema de busca. Ele inicializa com um problema específico e utiliza uma fila de prioridade (heapq) para gerenciar os nós visitados. O método `search` realiza a busca enquanto a fila de prioridade não está vazia. Ele remove o nó com a menor prioridade, verifica se é o nó objetivo, e se não for, explora seus filhos e os adiciona à fila de prioridade com base no custo total (`f(n)`) que combina o custo do nó e a heurística. Se encontrar a solução, o método retorna o nó objetivo. O código também fornece uma função `visited` para retornar a lista de nós visitados. Na execução principal, o código inicializa o problema com um estado inicial e final, realiza a busca com `AStarSearch` e imprime os nós visitados e a solução encontrada com seu custo total.
 
 ## Exemplo de uso
 
